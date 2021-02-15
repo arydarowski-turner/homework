@@ -56,8 +56,8 @@ function parse($lines)
             // Paragraph states.
             $start_paragraph = start_paragraph($previous_line, $next_line);
             $end_paragraph = end_paragraph($previous_line, $next_line);
-            $isolated_paragraph = isolated_paragraph($previous_line, $next_line);
             $middle_paragraph = middle_paragraph($previous_line, $next_line);
+            $isolated_paragraph = isolated_paragraph($previous_line, $next_line);
             //print "Line: $line \n start paragraph: $start_paragraph \n end paragraph: $end_paragraph\n isolated paragraph: $isolated_paragraph\n middle paragraph: $middle_paragraph\n";
 
             if ($start_paragraph) {
