@@ -23,6 +23,7 @@ function parse($lines)
         if (isset($lines[$pointer + 1])) {
             $next_line = trim($lines[$pointer + 1]);
         }
+        // if on second line, get first line.
         if ($pointer >= 1) {
             $previous_line = trim($lines[$pointer - 1]);
         }
