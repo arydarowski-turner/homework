@@ -123,7 +123,7 @@ function start_paragraph($previous_line, $next_line)
     elseif (header_test($next_line)) {
         // If header test returns true, return false for continuing paragraph.
         return FALSE;
-    } elseif (is_paragraph($previous_line)) {
+    } elseif (_is_paragraph($previous_line)) {
         return FALSE;
     } else {
         return TRUE;
@@ -132,11 +132,21 @@ function start_paragraph($previous_line, $next_line)
 
 function end_paragraph($previous_line, $next_line)
 {
-    if (is_paragraph($previous_line) === TRUE && start_paragraph($previous_line, $next_line) === FALSE && middle_paragraph($previous_line, $next_line) !== TRUE) {
+    if (_is_paragraph($previous_line) === TRUE && start_paragraph($previous_line, $next_line) === FALSE && middle_paragraph($previous_line, $next_line) !== TRUE) {
         return TRUE;
     } else {
         return FALSE;
     }
+}
+
+function middle_paragraph($previous_line, $next_line)
+{
+    if (_is_paragraph($previous_line) && _is_paragraph($next_line)) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+
 }
 
 function isolated_paragraph($previous_line, $next_line)
@@ -146,27 +156,6 @@ function isolated_paragraph($previous_line, $next_line)
     } else {
         return FALSE;
     }
-}
-
-function middle_paragraph($previous_line, $next_line)
-{
-    if (is_paragraph($previous_line) && is_paragraph($next_line)) {
-        return TRUE;
-    } else {
-        return FALSE;
-    }
-
-}
-
-function is_paragraph($line)
-{
-    if (empty($line)) {
-        return FALSE;
-    }
-    if (header_test($line)) {
-        return FALSE;
-    }
-    return TRUE;
 }
 
 // Abstracting so we can use this later with other types of characters.
@@ -183,6 +172,17 @@ function _count_char($line_array, $char, $level)
         }
     }
     return $level;
+}
+
+function _is_paragraph($line)
+{
+    if (empty($line)) {
+        return FALSE;
+    }
+    if (header_test($line)) {
+        return FALSE;
+    }
+    return TRUE;
 }
 
 
