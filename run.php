@@ -9,7 +9,7 @@ function parse($lines)
 {
     // Return if empty file.
     if (empty($lines)) {
-        return "Empty markdown file.";
+        return false;
     }
 
     $pointer = -1;
