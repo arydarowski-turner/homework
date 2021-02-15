@@ -28,6 +28,7 @@ function parse($lines)
         }
 
         /* Blank Line */
+
         if (empty($line)) {
             continue;
         }
@@ -116,7 +117,6 @@ function process_link($line)
 
 function start_paragraph($previous_line, $next_line)
 {
-    // TODO consider refactoring this to switch statement.
     if (empty($next_line)) {
         return FALSE;
     } // Evaluates to 0 if not a header
