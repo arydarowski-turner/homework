@@ -73,7 +73,6 @@ function parse($lines)
                 $markup .= $new_line . ' ' . "\n";
             }
             elseif ($isolated_paragraph) {
-                // Don't continue the paragraph.
                 $new_line = "<p>" . $new_line . "</p>";
                 $markup .= $new_line . "\n";
             }
@@ -119,7 +118,7 @@ function start_paragraph($previous_line, $next_line)
 {
     if (empty($next_line)) {
         return FALSE;
-    } // Evaluates to 0 if not a header
+    } // Evaluates to 0 if not a header.
     elseif (header_test($next_line)) {
         // If header test returns true, return false for continuing paragraph.
         return FALSE;
